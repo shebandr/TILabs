@@ -1,0 +1,36 @@
+﻿<Window x:Class="TILabs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TILabs"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="5" x:Name="lab1Open" Click="lab1Open_Click">лабораторная 1</Button>
+            <Button Margin="5" x:Name="lab2Open" Click="lab2Open_Click">лабораторная 2</Button>
+            <Button Margin="5" x:Name="lab3Open" Click="lab3Open_Click">лабораторная 3</Button>
+        </StackPanel>
+        <StackPanel>
+            <StackPanel x:Name="StackPanelLab1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="5" x:Name="FileGen1Lab1" Click="FileGen1Lab1_Click">Записать файл 1</Button>
+                    <Button Margin="5" x:Name="FileGen2Lab1" Click="FileGen2Lab1_Click">Записать файл 2</Button>
+                    <Button Margin="5" x:Name="FileGen3Lab1" Click="FileGen3Lab1_Click">Записать файл 3</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="5" x:Name="FileRead1Lab1" Click="FileRead1Lab1_Click">Прочитать файл 1</Button>
+                    <Button Margin="5" x:Name="FileRead2Lab1" Click="FileRead2Lab1_Click">Прочитать файл 2</Button>
+                    <Button Margin="5" x:Name="FileRead3Lab1" Click="FileRead3Lab1_Click">Прочитать файл 3</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="StackPanelLab2">
+
+        </StackPanel>
+        <StackPanel x:Name="StackPanelLab3">
+
+        </StackPanel>
+    </StackPanel>
+</Window>
