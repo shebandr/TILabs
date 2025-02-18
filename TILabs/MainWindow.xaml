@@ -17,13 +17,56 @@
                 <StackPanel Orientation="Horizontal">
                     <Button Margin="5" x:Name="FileGen1Lab1" Click="FileGen1Lab1_Click">Записать файл 1</Button>
                     <Button Margin="5" x:Name="FileGen2Lab1" Click="FileGen2Lab1_Click">Записать файл 2</Button>
-                    <Button Margin="5" x:Name="FileGen3Lab1" Click="FileGen3Lab1_Click">Записать файл 3</Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Margin="5" x:Name="FileRead1Lab1" Click="FileRead1Lab1_Click">Прочитать файл 1</Button>
-                    <Button Margin="5" x:Name="FileRead2Lab1" Click="FileRead2Lab1_Click">Прочитать файл 2</Button>
-                    <Button Margin="5" x:Name="FileRead3Lab1" Click="FileRead3Lab1_Click">Прочитать файл 3</Button>
+                    <Button Margin="5" x:Name="Calc1Lab1" Click="Calc1Lab1_Click">Открыть файлы</Button>
                 </StackPanel>
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0">номер файла</Label>
+                    <Label Grid.Row="1" Grid.Column="0"> файл 1 </Label>
+                    <Label Grid.Row="2" Grid.Column="0"> файл 2 </Label>
+                    <Label Grid.Row="3" Grid.Column="0"> файл 3 </Label>
+
+                    <Label Grid.Row="0" Grid.Column="1">H1</Label>
+                    <Label Grid.Row="1" Grid.Column="1" x:Name="h1_1"></Label>
+                    <Label Grid.Row="2" Grid.Column="1" x:Name="h1_2"></Label>
+                    <Label Grid.Row="3" Grid.Column="1" x:Name="h1_3"></Label>
+                    <Label Grid.Row="0" Grid.Column="2">H2</Label>
+                    <Label Grid.Row="1" Grid.Column="2" x:Name="h2_1"></Label>
+                    <Label Grid.Row="2" Grid.Column="2" x:Name="h2_2"></Label>
+                    <Label Grid.Row="3" Grid.Column="2" x:Name="h2_3"></Label>
+                    <Label Grid.Row="0" Grid.Column="3">H3</Label>
+                    <Label Grid.Row="1" Grid.Column="3" x:Name="h3_1"></Label>
+                    <Label Grid.Row="2" Grid.Column="3" x:Name="h3_2"></Label>
+                    <Label Grid.Row="3" Grid.Column="3" x:Name="h3_3"></Label>
+
+                    <Label Grid.Row="0" Grid.Column="4">Макс. энтроп.</Label>
+                    <Label Grid.Row="1" Grid.Column="4" x:Name="h4_1"></Label>
+                    <Label Grid.Row="2" Grid.Column="4" x:Name="h4_2"></Label>
+                    <Label Grid.Row="3" Grid.Column="4" x:Name="h4_3"></Label>
+                    <Label Grid.Row="0" Grid.Column="5">Теор. энтроп.</Label>
+                    <Label Grid.Row="1" Grid.Column="5" x:Name="h5_1"></Label>
+                    <Label Grid.Row="2" Grid.Column="5" x:Name="h5_2"></Label>
+                    <Label Grid.Row="3" Grid.Column="5" x:Name="h5_3"></Label>
+
+
+                </Grid>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="StackPanelLab2">
