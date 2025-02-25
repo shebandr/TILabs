@@ -24,7 +24,7 @@ namespace TILabs
 
         List<string> symbols = new List<string> { "a", "b", "c" };
         List<double> probabilities = new List<double> { 0.2, 0.5, 0.3 };
-		int length = 100;
+		int length = 1500;
         public MainWindow()
 		{
 			InitializeComponent();
@@ -89,17 +89,17 @@ namespace TILabs
 
 
 
-            List<int> counts11 = Lab1.CalcCount(text);
-            List<int> counts12 = Lab1.CalcCount(text2);
-            List<int> counts13 = Lab1.CalcCount(text3);
+            List<int> counts11 = Lab1.CalcCount(text, 1);
+            List<int> counts12 = Lab1.CalcCount(text2, 1);
+            List<int> counts13 = Lab1.CalcCount(text3, 1);
 
-            List<int> counts21 = Lab1.CalcCountPairs(text);
-            List<int> counts22 = Lab1.CalcCountPairs(text2);
-            List<int> counts23 = Lab1.CalcCountPairs(text3);
+            List<int> counts21 = Lab1.CalcCount(text, 2);
+            List<int> counts22 = Lab1.CalcCount(text2, 2);
+            List<int> counts23 = Lab1.CalcCount(text3, 2);
 
-            List<int> counts31 = Lab1.CalcCountTriples(text);
-            List<int> counts32 = Lab1.CalcCountTriples(text2);
-            List<int> counts33 = Lab1.CalcCountTriples(text3);
+            List<int> counts31 = Lab1.CalcCount(text, 3);
+            List<int> counts32 = Lab1.CalcCount(text2, 3);
+            List<int> counts33 = Lab1.CalcCount(text3, 3);
 
             double sh11 = Lab1.Shennon(text, counts11);
             double sh12 = Lab1.Shennon(text2, counts12);
@@ -129,11 +129,32 @@ namespace TILabs
             h4_2.Content = Math.Log(counts12.Count, 2.0);
             h4_3.Content = Math.Log(counts13.Count, 2.0);
 
+			List<int> counts51 = new List<int>();
+			for (int i = 0; i < probabilities.Count; i++)
+			{
+				counts51.Add((int)((1.0/ (double)symbols.Count) * length));
+                Console.Write(counts51[i] + " ");
+			}
+            Console.WriteLine();
+			List<int> counts52 = new List<int>();
+			for (int i = 0; i < probabilities.Count; i++)
+			{
+				counts52.Add((int)(probabilities[i] * length));
+				Console.Write(counts52[i] + " ");
+			}
+			Console.WriteLine();
+			List<int> counts53 = new List<int>();
+/*			for (int i = 0; i < Lab1.probTextRussian.Count; i++)
+			{
+				counts53.Add((int)(Lab1.probTextRussian[i] * text3.Length));
+				Console.Write(counts53[i] + " ");
+			}*/
 
+			h5_1.Content = Lab1.Shennon(text, counts51);
+			h5_2.Content = Lab1.Shennon(text2, counts52);
+			h5_3.Content = "-";
 
-            List<int> countsPairs = Lab1.CalcCountPairs(text);
-            List<int> countsTriples = Lab1.CalcCountTriples(text);
-
+           
 
         }
 

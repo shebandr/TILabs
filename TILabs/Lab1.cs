@@ -8,6 +8,42 @@ namespace TILabs
 {
 	internal class Lab1
 	{
+		public static List<double> probTextRussian = new List<double>
+        {
+	        0.062,  // 'а'
+            0.014,  // 'б'
+            0.038,  // 'в'
+            0.025,  // 'г'
+            0.072,  // 'д'
+            0.072,  // 'е' (включая 'ё')
+            0.016,  // 'ж'
+            0.062,  // 'з'
+            0.062,  // 'и'
+            0.010,  // 'й'
+            0.028,  // 'к'
+            0.035,  // 'л'
+            0.026,  // 'м'
+            0.053,  // 'н'
+            0.090,  // 'о'
+            0.023,  // 'п'
+            0.040,  // 'р'
+            0.045,  // 'с'
+            0.053,  // 'т'
+            0.021,  // 'у'
+            0.002,  // 'ф'
+            0.009,  // 'х'
+            0.004,  // 'ц'
+            0.012,  // 'ч'
+            0.006,  // 'ш'
+            0.003,  // 'щ'
+            0.014,  // 'ъ' (объединён с 'ь')
+            0.014,  // 'ы'
+            0.006,  // 'ь' (объединён с 'ъ')
+            0.018,  // 'э'
+            0.016,  // 'ю'
+            0.006,  // 'я'
+            0.175   // пробел
+        };
 		public static string GenString1(List<string> symbols, int length)
 		{
 			Random r = new Random();
@@ -47,97 +83,44 @@ namespace TILabs
 			return result;
 		}
 
-        public static List<int> CalcCount(string text)
+        public static List<int> CalcCount(string text, int len)
         {
             List<int> counts = new List<int>();
             List<string> alphabet = new List<string>();
 
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length - (len-1); i++)
             {
-                if (!alphabet.Contains(text[i].ToString()))
+                string temp = "";
+                for(int j = 0; j<len; j++)
                 {
-                    alphabet.Add(text[i].ToString());
+                    temp+= text[i+j];
+					
+				}
+				if (!alphabet.Contains(temp))
+				{
+					alphabet.Add(temp);
 
-                    counts.Add(0);
-                }
-            }
+					counts.Add(0);
+				}
 
-            for (int i = 0; i < text.Length; i++)
+			}
+
+            for (int i = 0; i < text.Length - (len-1); i++)
             {
                 for (int q = 0; q < alphabet.Count; q++)
                 {
-                    if (text[i].ToString() == alphabet[q])
+					string temp = "";
+					for (int j = 0; j < len; j++)
+					{
+						temp += text[i + j];
+
+					}
+					if (temp == alphabet[q])
                     {
                         counts[q]++;
                         break;
                     }
                 }
-            }
-            return counts;
-        }
-
-        public static List<int> CalcCountPairs(string text)
-        {
-            List<int> counts = new List<int>();
-            List<string> alphabet = new List<string>();
-
-            for (int i = 0; i < text.Length - 1; i++)
-            {
-                if (!alphabet.Contains(text[i].ToString() + text[i + 1].ToString()))
-                {
-                    alphabet.Add(text[i].ToString() + text[i + 1].ToString());
-
-                    counts.Add(0);
-                }
-            }
-
-            for (int i = 0; i < text.Length - 1; i++)
-            {
-                for (int q = 0; q < alphabet.Count; q++)
-                {
-                    if (text[i].ToString() + text[i + 1].ToString() == alphabet[q])
-                    {
-                        counts[q]++;
-                        break;
-                    }
-                }
-            }
-            for (int i = 0; i < alphabet.Count; i++)
-            {
-                Console.WriteLine(alphabet[i] + " " + counts[i]);
-            }
-            return counts;
-        }
-
-        public static List<int> CalcCountTriples(string text)
-        {
-            List<int> counts = new List<int>();
-            List<string> alphabet = new List<string>();
-
-            for (int i = 0; i < text.Length - 2; i++)
-            {
-                if (!alphabet.Contains(text[i].ToString() + text[i + 1].ToString() + text[i + 2].ToString()))
-                {
-                    alphabet.Add(text[i].ToString() + text[i + 1].ToString() + text[i + 2].ToString());
-
-                    counts.Add(0);
-                }
-            }
-
-            for (int i = 0; i < text.Length - 2; i++)
-            {
-                for (int q = 0; q < alphabet.Count; q++)
-                {
-                    if (text[i].ToString() + text[i + 1].ToString() + text[i + 2].ToString() == alphabet[q])
-                    {
-                        counts[q]++;
-                        break;
-                    }
-                }
-            }
-            for (int i = 0; i < alphabet.Count; i++)
-            {
-                Console.WriteLine(alphabet[i] + " " + counts[i]);
             }
             return counts;
         }

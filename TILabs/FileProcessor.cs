@@ -16,7 +16,6 @@ namespace TILabs
 
 			StreamReader stream = new StreamReader(path);
 			data = stream.ReadLine();
-			Console.WriteLine(data);
 
 
 
