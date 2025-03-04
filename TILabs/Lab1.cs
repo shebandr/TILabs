@@ -87,7 +87,6 @@ namespace TILabs
         {
             List<int> counts = new List<int>();
             List<string> alphabet = new List<string>();
-
             for (int i = 0; i < text.Length - (len-1); i++)
             {
                 string temp = "";
@@ -105,6 +104,7 @@ namespace TILabs
 
 			}
 
+            Console.WriteLine(text.Length + " " + alphabet.Count + " " + counts.Count);
             for (int i = 0; i < text.Length - (len-1); i++)
             {
                 for (int q = 0; q < alphabet.Count; q++)

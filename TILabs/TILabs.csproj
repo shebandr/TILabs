@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="FileProcessor.cs" />
     <Compile Include="Lab1.cs" />
+    <Compile Include="Lab2.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

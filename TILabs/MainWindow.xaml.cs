@@ -119,11 +119,11 @@ namespace TILabs
 
             h2_1.Content = sh21;
             h2_2.Content = sh22;
-            h2_3.Content = sh23;
+            h2_3.Content = sh23/2;
 
             h3_1.Content = sh31;
             h3_2.Content = sh32;
-            h3_3.Content = sh33;
+            h3_3.Content = sh33/3;
 
             h4_1.Content = Math.Log(counts11.Count, 2.0);
             h4_2.Content = Math.Log(counts12.Count, 2.0);
@@ -144,15 +144,16 @@ namespace TILabs
 			}
 			Console.WriteLine();
 			List<int> counts53 = new List<int>();
-/*			for (int i = 0; i < Lab1.probTextRussian.Count; i++)
-			{
-				counts53.Add((int)(Lab1.probTextRussian[i] * text3.Length));
-				Console.Write(counts53[i] + " ");
-			}*/
+            /*			for (int i = 0; i < Lab1.probTextRussian.Count; i++)
+                        {
+                            counts53.Add((int)(Lab1.probTextRussian[i] * text3.Length));
+                            Console.Write(counts53[i] + " ");
+                        }*/
 
+            Console.WriteLine(counts13);
 			h5_1.Content = Lab1.Shennon(text, counts51);
 			h5_2.Content = Lab1.Shennon(text2, counts52);
-			h5_3.Content = "-";
+			h5_3.Content = counts13.Count;
 
            
 
