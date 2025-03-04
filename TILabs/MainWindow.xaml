@@ -13,7 +13,7 @@
             <Button Margin="5" x:Name="lab3Open" Click="lab3Open_Click">лабораторная 3</Button>
         </StackPanel>
         <StackPanel>
-            <StackPanel x:Name="StackPanelLab1">
+            <StackPanel x:Name="StackPanelLab1" Visibility="Collapsed">
                 <StackPanel Orientation="Horizontal">
                     <Button Margin="5" x:Name="FileGen1Lab1" Click="FileGen1Lab1_Click">Записать файл 1</Button>
                     <Button Margin="5" x:Name="FileGen2Lab1" Click="FileGen2Lab1_Click">Записать файл 2</Button>
@@ -69,10 +69,52 @@
                 </Grid>
             </StackPanel>
         </StackPanel>
-        <StackPanel x:Name="StackPanelLab2">
+        <StackPanel x:Name="StackPanelLab2" Visibility="Visible">
 
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="5" x:Name="Calc2Lab1" Click="Calc2Lab1_Click">Открыть файлы</Button>
+                </StackPanel>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Метод</Label>
+                <Label Grid.Row="1" Grid.Column="0">Хаффман</Label>
+                <Label Grid.Row="2" Grid.Column="0">Шеннон-Фано</Label>
+    
+                <Label Grid.Row="0" Grid.Column="1">избыточность</Label>
+                <Label Grid.Row="1" Grid.Column="1" x:Name="h22_1"></Label>
+                <Label Grid.Row="2" Grid.Column="1" x:Name="h22_2"></Label>
+                
+                <Label Grid.Row="0" Grid.Column="2">H1</Label>
+                <Label Grid.Row="1" Grid.Column="2" x:Name="h23_1"></Label>
+                <Label Grid.Row="2" Grid.Column="2" x:Name="h23_2"></Label>
+
+                <Label Grid.Row="0" Grid.Column="3">H2</Label>
+                <Label Grid.Row="1" Grid.Column="3" x:Name="h24_1"></Label>
+                <Label Grid.Row="2" Grid.Column="3" x:Name="h24_2"></Label>
+                
+                <Label Grid.Row="0" Grid.Column="4">H3</Label>
+                <Label Grid.Row="1" Grid.Column="4" x:Name="h25_1"></Label>
+                <Label Grid.Row="2" Grid.Column="4" x:Name="h25_2"></Label>
+
+
+            </Grid>
         </StackPanel>
-        <StackPanel x:Name="StackPanelLab3">
+        <StackPanel x:Name="StackPanelLab3" Visibility="Collapsed">
 
         </StackPanel>
     </StackPanel>

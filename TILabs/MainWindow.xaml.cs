@@ -182,6 +182,95 @@ namespace TILabs
 
 		}
 
+		private void Calc2Lab1_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			string path = "";
 
+			if (openFileDialog.ShowDialog() == true)
+			{
+				path = openFileDialog.FileName;
+			}
+			string text = FileProcessor.FileToString(path);
+            Dictionary<string, int> counts = Lab2.CalcCount(text);
+            Dictionary<string, string> haffman = Lab2.Haffman(counts);
+
+
+
+			double codeLengthH = 0;
+			foreach (var s in haffman)
+            {
+                Console.WriteLine(s.Key + " = " + s.Value);
+                codeLengthH += (double)s.Value.Length * (double)((double)counts[s.Key] / (double)text.Length);
+            }
+            Console.WriteLine(codeLengthH);
+            List<int> countsForShennon = new List<int>();
+            foreach (var s in counts)
+            {
+                countsForShennon.Add(s.Value);
+            }
+
+            double entropyH = Lab1.Shennon(text, countsForShennon);
+            Console.WriteLine(codeLengthH + " " + entropyH + " " + (codeLengthH-entropyH));
+
+            string codedTextH = "";
+            for(int i = 0; i<text.Length; i++)
+            {
+                codedTextH += haffman[text[i].ToString()];
+			}
+
+
+
+            Dictionary<string, string> sf = Lab2.ShennonFano(counts);
+			double codeLengthSF = 0;
+			foreach (var s in sf)
+			{
+				Console.WriteLine(s.Key + " = " + s.Value);
+				codeLengthSF += (double)s.Value.Length * (double)((double)counts[s.Key] / (double)text.Length);
+			}
+
+			double entropySF = Lab1.Shennon(text, countsForShennon);
+
+			string codedTextSF = "";
+			for (int i = 0; i < text.Length; i++)
+			{
+				codedTextSF += sf[text[i].ToString()];
+			}
+
+
+
+			Console.WriteLine(1);
+			List<int> counts211 = Lab1.CalcCount(codedTextH, 1);
+
+			Console.WriteLine(2);
+			List<int> counts212 = Lab1.CalcCount(codedTextH, 2);
+			
+            Console.WriteLine(3);
+            List<int> counts213 = Lab1.CalcCount(codedTextH, 3);
+
+
+			Console.WriteLine(1);
+			List<int> counts221 = Lab1.CalcCount(codedTextSF, 1);
+
+			Console.WriteLine(2);
+			List<int> counts222 = Lab1.CalcCount(codedTextSF, 2);
+
+			Console.WriteLine(3);
+			List<int> counts223 = Lab1.CalcCount(codedTextSF, 3);
+
+
+			h23_1.Content = Lab1.Shennon(codedTextH, counts211);
+			h24_1.Content = Lab1.Shennon(codedTextH, counts212) / 2;
+			h25_1.Content = Lab1.Shennon(codedTextH, counts213) / 3;
+
+			h23_2.Content = Lab1.Shennon(codedTextSF, counts221);
+			h24_2.Content = Lab1.Shennon(codedTextSF, counts222) / 2;
+			h25_2.Content = Lab1.Shennon(codedTextSF, counts223) / 3;
+
+			h22_1.Content = codeLengthH - entropyH;
+			h22_2.Content = codeLengthSF - entropySF;
+
+
+		}
 	}
 }
