@@ -17,20 +17,26 @@ namespace TILabs
     }
     internal class Lab2
     {
-        public static Dictionary<string, int> CalcCount(string text)
+        public static Dictionary<string, int> CalcCount(string text, int len)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
             List<int> counts = new List<int>();
             List<string> alphabet = new List<string>();
-            for (int i = 0; i < text.Length; i++)
-            {
-                if (!result.ContainsKey(text[i].ToString()))
+            
+            for (int i = 0; i < text.Length-len; i+=len)
+             {
+				string tempKey = "";
+                for(int j = 0; j < len; j++)
                 {
-                    result.Add(text[i].ToString(), 1);
+                    tempKey += text[i + j];
+                }
+				if (!result.ContainsKey(tempKey))
+                {
+                    result.Add(tempKey, 1);
 
                 } else
                 {
-                    result[text[i].ToString()]++;
+                    result[tempKey]++;
                 }
 
             }

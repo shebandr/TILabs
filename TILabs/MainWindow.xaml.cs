@@ -192,7 +192,7 @@ namespace TILabs
 				path = openFileDialog.FileName;
 			}
 			string text = FileProcessor.FileToString(path);
-            Dictionary<string, int> counts = Lab2.CalcCount(text);
+            Dictionary<string, int> counts = Lab2.CalcCount(text, 1);
             Dictionary<string, string> haffman = Lab2.Haffman(counts);
 
 
@@ -269,6 +269,69 @@ namespace TILabs
 
 			h22_1.Content = codeLengthH - entropyH;
 			h22_2.Content = codeLengthSF - entropySF;
+
+
+		}
+
+		private void Calc3Lab1_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			string path = "";
+
+			if (openFileDialog.ShowDialog() == true)
+			{
+				path = openFileDialog.FileName;
+			}
+			string text = FileProcessor.FileToString(path);
+			List< Dictionary<string, int>> counts = new List< Dictionary<string, int> >();
+			List<double> entropy = new List< double >();
+			List< Dictionary<string, string>> codesH = new List< Dictionary<string, string> >();
+			List<double> codeLengths = new List< double >();
+			List<double> overCode = new List<double> ();
+			List<List<string>> splitedText = new List<List<string>>();
+			List<string> codedText = new List< string >();
+			for (int i = 0; i<4; i++)
+			{
+				counts.Add(Lab2.CalcCount(text, i+1));
+				List<int> tempCounts = new List<int>();
+				foreach (var s in counts[i])
+				{
+					tempCounts.Add(s.Value);
+				}
+				
+				codesH.Add(Lab2.Haffman(counts[i]));
+				codedText.Add("");
+				splitedText.Add(new List<string>());
+				for (int q = 0; q < text.Length; q+=i+1)
+				{
+					string t = "";
+					for(int j = 0; j<i+1; j++)
+					{
+						t += text[q + j];
+					}
+					splitedText[i].Add(t);
+				}
+
+				for(int q = 0; q< splitedText[i].Count; q++)
+				{
+					codedText[i] += codesH[i][splitedText[i][q]];
+				}
+
+				entropy.Add(Lab1.Shennon(codedText[i], tempCounts));
+
+				codeLengths.Add(0);
+				foreach (var s in codesH[i])
+				{
+					Console.WriteLine(s.Key + " = " + s.Value);
+					codeLengths[i] += (double)s.Value.Length * (double)((double)counts[i][s.Key] /((double)text.Length / (double)(i+1)));
+				}
+				overCode.Add((codeLengths[i] - entropy[i])/ (double)(i+1));
+			}
+
+			h32_1.Content = overCode[0];
+			h33_1.Content = overCode[1];
+			h34_1.Content = overCode[2];
+			h35_1.Content = overCode[3];
 
 
 		}

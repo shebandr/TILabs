@@ -69,7 +69,7 @@
                 </Grid>
             </StackPanel>
         </StackPanel>
-        <StackPanel x:Name="StackPanelLab2" Visibility="Visible">
+        <StackPanel x:Name="StackPanelLab2" Visibility="Collapsed">
 
 
                 <StackPanel Orientation="Horizontal">
@@ -114,8 +114,48 @@
 
             </Grid>
         </StackPanel>
-        <StackPanel x:Name="StackPanelLab3" Visibility="Collapsed">
+        <StackPanel x:Name="StackPanelLab3" Visibility="Visible">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5" x:Name="Calc3Lab1" Click="Calc3Lab1_Click">Открыть файлы</Button>
+            </StackPanel>
+            <Grid>
 
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"></Label>
+                <Label Grid.Row="1" Grid.Column="0">Избыточность</Label>
+
+
+                <Label Grid.Row="0" Grid.Column="1">1</Label>
+                <Label Grid.Row="1" Grid.Column="1" x:Name="h32_1"></Label>
+
+
+                <Label Grid.Row="0" Grid.Column="2">2</Label>
+                <Label Grid.Row="1" Grid.Column="2" x:Name="h33_1"></Label>
+
+
+                <Label Grid.Row="0" Grid.Column="3">3</Label>
+                <Label Grid.Row="1" Grid.Column="3" x:Name="h34_1"></Label>
+
+
+                <Label Grid.Row="0" Grid.Column="4">4</Label>
+                <Label Grid.Row="1" Grid.Column="4" x:Name="h35_1"></Label>
+
+
+
+            </Grid>
         </StackPanel>
     </StackPanel>
 </Window>
