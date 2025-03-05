@@ -144,5 +144,24 @@ namespace TILabs
             return result;
         }
 
-	}
+        public static double Shennon(int text, List<int> counts)
+        {
+            double result = 0;
+
+            for (int i = 0; i < counts.Count; i++)
+            {
+                if (counts[i] != 0)
+                {
+                    double p_i = (double)counts[i] / text;
+                    if (p_i > 0)
+                    {
+                        result -= p_i * Math.Log(p_i, 2.0);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+    }
 }

@@ -317,16 +317,19 @@ namespace TILabs
 					codedText[i] += codesH[i][splitedText[i][q]];
 				}
 
-				entropy.Add(Lab1.Shennon(codedText[i], tempCounts));
+
+				entropy.Add(Lab1.Shennon(splitedText[i].Count, tempCounts));
 
 				codeLengths.Add(0);
 				foreach (var s in codesH[i])
 				{
 					Console.WriteLine(s.Key + " = " + s.Value);
-					codeLengths[i] += (double)s.Value.Length * (double)((double)counts[i][s.Key] /((double)text.Length / (double)(i+1)));
+					codeLengths[i] += (double)s.Value.Length * (double)((double)counts[i][s.Key] / ((double)splitedText[i].Count));
 				}
 				overCode.Add((codeLengths[i] - entropy[i])/ (double)(i+1));
+				Console.WriteLine(codeLengths[i] + " " + entropy[i] + " " + overCode[i]);
 			}
+			
 
 			h32_1.Content = overCode[0];
 			h33_1.Content = overCode[1];
