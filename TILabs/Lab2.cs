@@ -47,8 +47,8 @@ namespace TILabs
 		{
 			if (node == null)
 				return;
-            Console.Write(node.data + "|");
-			if (!string.IsNullOrEmpty(node.data))
+/*            Console.Write(node.data + "|");*/
+            if (!string.IsNullOrEmpty(node.data))
 			{
 				codeDictionary[node.data] = code;
                 Console.WriteLine(code);
@@ -77,11 +77,11 @@ namespace TILabs
 
             while (true)
             {
-                foreach(var v in vertices)
+/*                foreach(var v in vertices)
                 {
                     Console.Write(v.data + " " + v.weight + " | ");
                 }
-                Console.WriteLine();
+                Console.WriteLine();*/
 				if (vertices.Count < 2)
 				{
 					break;

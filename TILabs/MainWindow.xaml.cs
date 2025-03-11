@@ -219,8 +219,6 @@ namespace TILabs
                 codedTextH += haffman[text[i].ToString()];
 			}
 
-
-
             Dictionary<string, string> sf = Lab2.ShennonFano(counts);
 			double codeLengthSF = 0;
 			foreach (var s in sf)
@@ -323,11 +321,14 @@ namespace TILabs
 				codeLengths.Add(0);
 				foreach (var s in codesH[i])
 				{
-					Console.WriteLine(s.Key + " = " + s.Value);
+//					Console.WriteLine(s.Key + " = " + s.Value);
 					codeLengths[i] += (double)s.Value.Length * (double)((double)counts[i][s.Key] / ((double)splitedText[i].Count));
 				}
-				overCode.Add((codeLengths[i] - entropy[i])/ (double)(i+1));
-				Console.WriteLine(codeLengths[i] + " " + entropy[i] + " " + overCode[i]);
+
+                Console.WriteLine(i + ") " + codedText[i].Length + " " + text.Length);
+
+                overCode.Add((codeLengths[i] - entropy[i])/ (double)(i+1));
+	//			Console.WriteLine(codeLengths[i] + " " + entropy[i] + " " + overCode[i]);
 			}
 			
 
