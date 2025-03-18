@@ -11,6 +11,8 @@
             <Button Margin="5" x:Name="lab1Open" Click="lab1Open_Click">лабораторная 1</Button>
             <Button Margin="5" x:Name="lab2Open" Click="lab2Open_Click">лабораторная 2</Button>
             <Button Margin="5" x:Name="lab3Open" Click="lab3Open_Click">лабораторная 3</Button>
+            <Button Margin="5" x:Name="lab4Open" Click="lab4Open_Click">лабораторная 4</Button>
+            <Button Margin="5" x:Name="lab5Open" Click="lab5Open_Click">лабораторная 5</Button>
         </StackPanel>
         <StackPanel>
             <StackPanel x:Name="StackPanelLab1" Visibility="Collapsed">
@@ -114,7 +116,7 @@
 
             </Grid>
         </StackPanel>
-        <StackPanel x:Name="StackPanelLab3" Visibility="Visible">
+        <StackPanel x:Name="StackPanelLab3" Visibility="Collapsed">
             <StackPanel Orientation="Horizontal">
                 <Button Margin="5" x:Name="Calc3Lab1" Click="Calc3Lab1_Click">Открыть файлы</Button>
             </StackPanel>
@@ -156,6 +158,62 @@
 
 
             </Grid>
+        </StackPanel>
+        <StackPanel x:Name="StackPanelLab4" Visibility="Visible">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5" x:Name="Calc4Lab1" Click="Calc4Lab1_Click">Открыть файлы</Button>
+            </StackPanel>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Размер матрицы</Label>
+                <Label Grid.Row="1" Grid.Column="0" x:Name="h41_0"></Label>
+                <Label Grid.Row="2" Grid.Column="0" x:Name="h42_0"></Label>
+                <Label Grid.Row="3" Grid.Column="0" x:Name="h43_0"></Label>
+                <Label Grid.Row="4" Grid.Column="0" x:Name="h44_0"></Label>
+                <Label Grid.Row="5" Grid.Column="0" x:Name="h45_0"></Label>
+
+                <Label Grid.Row="0" Grid.Column="1">Размерность кода</Label>
+                <Label Grid.Row="1" Grid.Column="1" x:Name="h41_1"></Label>
+                <Label Grid.Row="2" Grid.Column="1" x:Name="h42_1"></Label>
+                <Label Grid.Row="3" Grid.Column="1" x:Name="h43_1"></Label>
+                <Label Grid.Row="4" Grid.Column="1" x:Name="h44_1"></Label>
+                <Label Grid.Row="5" Grid.Column="1" x:Name="h45_1"></Label>
+
+                <Label Grid.Row="0" Grid.Column="2">Кол-во кодовых слов</Label>
+                <Label Grid.Row="1" Grid.Column="2" x:Name="h41_2"></Label>
+                <Label Grid.Row="2" Grid.Column="2" x:Name="h42_2"></Label>
+                <Label Grid.Row="3" Grid.Column="2" x:Name="h43_2"></Label>
+                <Label Grid.Row="4" Grid.Column="2" x:Name="h44_2"></Label>
+                <Label Grid.Row="5" Grid.Column="2" x:Name="h45_2"></Label>
+
+                <Label Grid.Row="0" Grid.Column="3">Мин расст d</Label>
+                <Label Grid.Row="1" Grid.Column="3" x:Name="h41_3"></Label>
+                <Label Grid.Row="2" Grid.Column="3" x:Name="h42_3"></Label>
+                <Label Grid.Row="3" Grid.Column="3" x:Name="h43_3"></Label>
+                <Label Grid.Row="4" Grid.Column="3" x:Name="h44_3"></Label>
+                <Label Grid.Row="5" Grid.Column="3" x:Name="h45_3"></Label>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="StackPanelLab5">
+            
         </StackPanel>
     </StackPanel>
 </Window>

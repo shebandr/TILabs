@@ -165,6 +165,8 @@ namespace TILabs
 			StackPanelLab1.Visibility = Visibility.Visible;
 			StackPanelLab2.Visibility = Visibility.Collapsed;
 			StackPanelLab3.Visibility = Visibility.Collapsed;
+			StackPanelLab4.Visibility = Visibility.Collapsed;
+			StackPanelLab5.Visibility = Visibility.Collapsed;
 		}
 
 		private void lab2Open_Click(object sender, RoutedEventArgs e)
@@ -172,16 +174,34 @@ namespace TILabs
 			StackPanelLab1.Visibility = Visibility.Collapsed;
 			StackPanelLab2.Visibility = Visibility.Visible;
 			StackPanelLab3.Visibility = Visibility.Collapsed;
-
+			StackPanelLab4.Visibility = Visibility.Collapsed;
+			StackPanelLab5.Visibility = Visibility.Collapsed;
 		}
 		private void lab3Open_Click(object sender, RoutedEventArgs e)
 		{
 			StackPanelLab1.Visibility = Visibility.Collapsed;
 			StackPanelLab2.Visibility = Visibility.Collapsed;
 			StackPanelLab3.Visibility = Visibility.Visible;
-
+			StackPanelLab4.Visibility = Visibility.Collapsed;
+			StackPanelLab5.Visibility = Visibility.Collapsed;
+		}
+		private void lab4Open_Click(object sender, RoutedEventArgs e)
+		{
+			StackPanelLab1.Visibility = Visibility.Collapsed;
+			StackPanelLab2.Visibility = Visibility.Collapsed;
+			StackPanelLab3.Visibility = Visibility.Collapsed;
+			StackPanelLab4.Visibility = Visibility.Visible;
+			StackPanelLab5.Visibility = Visibility.Collapsed;
 		}
 
+		private void lab5Open_Click(object sender, RoutedEventArgs e)
+		{
+			StackPanelLab1.Visibility = Visibility.Collapsed;
+			StackPanelLab2.Visibility = Visibility.Collapsed;
+			StackPanelLab3.Visibility = Visibility.Collapsed;
+			StackPanelLab4.Visibility = Visibility.Collapsed;
+			StackPanelLab5.Visibility = Visibility.Visible;
+		}
 		private void Calc2Lab1_Click(object sender, RoutedEventArgs e)
 		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -338,6 +358,44 @@ namespace TILabs
 			h35_1.Content = overCode[3];
 
 
+		}
+
+		private void Calc4Lab1_Click(object sender, RoutedEventArgs e)
+		{
+			List<List<List<int>>> tables = new List<List<List<int>>>();
+			List<int> minDist = new List<int>();
+			for(int i = 0; i<5; i++)
+			{
+				tables.Add(Lab4.GenMatrix(5 + (i * 3), 3+i));
+				minDist.Add(Lab4.CalcMinCodeDist(tables[i]));
+			}
+
+
+
+
+			h41_0.Content = tables[0].Count + "x" + tables[0][0].Count;
+			h42_0.Content = tables[1].Count + "x" + tables[1][0].Count;
+			h43_0.Content = tables[2].Count + "x" + tables[2][0].Count;
+			h44_0.Content = tables[3].Count + "x" + tables[3][0].Count;
+			h45_0.Content = tables[4].Count + "x" + tables[4][0].Count;
+
+			h41_1.Content = tables[0].Count;
+			h42_1.Content = tables[1].Count;
+			h43_1.Content = tables[2].Count;
+			h44_1.Content = tables[3].Count;
+			h45_1.Content = tables[4].Count;
+
+			h41_2.Content = Math.Pow(2,tables[0].Count);
+			h42_2.Content = Math.Pow(2, tables[1].Count);
+			h43_2.Content = Math.Pow(2, tables[2].Count);
+			h44_2.Content = Math.Pow(2, tables[3].Count);
+			h45_2.Content = Math.Pow(2, tables[4].Count);
+
+			h41_3.Content = minDist[0];
+			h42_3.Content = minDist[1];
+			h43_3.Content = minDist[2];
+			h44_3.Content = minDist[3];
+			h45_3.Content = minDist[4];
 		}
 	}
 }
