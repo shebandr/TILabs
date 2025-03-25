@@ -397,5 +397,30 @@ namespace TILabs
 			h44_3.Content = minDist[3];
 			h45_3.Content = minDist[4];
 		}
-	}
+
+        private void Calc5Lab1_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string path = "";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                path = openFileDialog.FileName;
+            }
+            string text = FileProcessor.FileToString(path);
+            Dictionary<string, int> counts = Lab2.CalcCount(text, 1);
+            Dictionary<string, string> haffman = Lab2.Haffman(counts);
+
+			string original = "";
+			for (int i = 0; i < counts.Count; i++) 
+			{
+				original += haffman[text[i].ToString()];
+			}
+			string coded = Lab5.HammingCode(original, 8);
+
+            string result1 = new string(coded.Select(c => (new Random().NextDouble() < 0.1) ? (c == '1' ? '0' : '1') : c).ToArray());
+
+
+        }
+    }
 }

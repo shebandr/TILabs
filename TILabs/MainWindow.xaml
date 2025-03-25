@@ -213,7 +213,41 @@
         </StackPanel>
 
         <StackPanel x:Name="StackPanelLab5">
-            
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5" x:Name="Calc5Lab1" Click="Calc5Lab1_Click">Открыть файлы</Button>
+            </StackPanel>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0">Вероятность ош.</Label>
+                <Label Grid.Row="1" Grid.Column="0">Кол-во ош.</Label>
+
+
+                <Label Grid.Row="0" Grid.Column="1">p=0.0001</Label>
+                <Label Grid.Row="1" Grid.Column="1" x:Name="h51_0"></Label>
+
+                <Label Grid.Row="0" Grid.Column="2">p=0.001</Label>
+                <Label Grid.Row="1" Grid.Column="2" x:Name="h51_1"></Label>
+
+                <Label Grid.Row="0" Grid.Column="3">p=0.01</Label>
+                <Label Grid.Row="1" Grid.Column="3" x:Name="h51_2"></Label>
+
+                <Label Grid.Row="0" Grid.Column="4">p=0.1</Label>
+                <Label Grid.Row="1" Grid.Column="4" x:Name="h51_3"></Label>
+            </Grid>
         </StackPanel>
     </StackPanel>
 </Window>
