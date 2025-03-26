@@ -24,7 +24,7 @@ namespace TILabs
 
         List<string> symbols = new List<string> { "a", "b", "c" };
         List<double> probabilities = new List<double> { 0.2, 0.5, 0.3 };
-		int length = 1500000;
+		int length = 15000;
         public MainWindow()
 		{
 			InitializeComponent();
@@ -437,6 +437,8 @@ namespace TILabs
 			h51_1.Content = err2;
 			h51_2.Content = err3;
 			h51_3.Content = err4;
+
+			Console.WriteLine(original.Length);
 		}
 	}
 }
