@@ -24,7 +24,7 @@ namespace TILabs
 
         List<string> symbols = new List<string> { "a", "b", "c" };
         List<double> probabilities = new List<double> { 0.2, 0.5, 0.3 };
-		int length = 1500;
+		int length = 1500000;
         public MainWindow()
 		{
 			InitializeComponent();
@@ -398,29 +398,45 @@ namespace TILabs
 			h45_3.Content = minDist[4];
 		}
 
-        private void Calc5Lab1_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            string path = "";
+		private void Calc5Lab1_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			if (openFileDialog.ShowDialog() != true) return;
 
-            if (openFileDialog.ShowDialog() == true)
-            {
-                path = openFileDialog.FileName;
-            }
-            string text = FileProcessor.FileToString(path);
-            Dictionary<string, int> counts = Lab2.CalcCount(text, 1);
-            Dictionary<string, string> haffman = Lab2.Haffman(counts);
+			string text = FileProcessor.FileToString(openFileDialog.FileName);
+			if (string.IsNullOrEmpty(text)) return;
+
+			Dictionary<string, int> counts = Lab2.CalcCount(text, 1);
+			Dictionary<string, string> haffman = Lab2.Haffman(counts);
 
 			string original = "";
-			for (int i = 0; i < counts.Count; i++) 
+			for (int i = 0; i < text.Length; i++)
 			{
 				original += haffman[text[i].ToString()];
 			}
+
 			string coded = Lab5.HammingCode(original, 8);
 
-            string result1 = new string(coded.Select(c => (new Random().NextDouble() < 0.1) ? (c == '1' ? '0' : '1') : c).ToArray());
+			Random rand = new Random();
+			string result1 = new string(coded.Select(c => (rand.NextDouble() < 0.1) ? (c == '1' ? '0' : '1') : c).ToArray());
+			string result2 = new string(coded.Select(c => (rand.NextDouble() < 0.01) ? (c == '1' ? '0' : '1') : c).ToArray());
+			string result3 = new string(coded.Select(c => (rand.NextDouble() < 0.001) ? (c == '1' ? '0' : '1') : c).ToArray());
+			string result4 = new string(coded.Select(c => (rand.NextDouble() < 0.0001) ? (c == '1' ? '0' : '1') : c).ToArray());
 
+			string decoded1 = Lab5.HammingDecode(result1, 8);
+			string decoded2 = Lab5.HammingDecode(result2, 8);
+			string decoded3 = Lab5.HammingDecode(result3, 8);
+			string decoded4 = Lab5.HammingDecode(result4, 8);
 
-        }
-    }
+			int err1 = decoded1.Zip(original, (d, o) => d != o ? 1 : 0).Sum();
+			int err2 = decoded2.Zip(original, (d, o) => d != o ? 1 : 0).Sum();
+			int err3 = decoded3.Zip(original, (d, o) => d != o ? 1 : 0).Sum();
+			int err4 = decoded4.Zip(original, (d, o) => d != o ? 1 : 0).Sum();
+
+			h51_0.Content = err1;
+			h51_1.Content = err2;
+			h51_2.Content = err3;
+			h51_3.Content = err4;
+		}
+	}
 }

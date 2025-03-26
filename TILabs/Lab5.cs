@@ -65,60 +65,60 @@ namespace TILabs
             return result;
         }
 
-        public static string HammingDecode(string encodedInput, int wordLen)
-        {
-            string result = "";
+		public static string HammingDecode(string encodedInput, int wordLen)
+		{
+			string result = "";
 
-            // Итерация по закодированным словам
-            for (int i = 0; i < encodedInput.Length; i += wordLen + (int)Math.Ceiling(Math.Log(wordLen + 1, 2)))
-            {
-                // Берем закодированное слово
-                string encodedWord = encodedInput.Substring(i, Math.Min(wordLen + (int)Math.Ceiling(Math.Log(wordLen + 1, 2)), encodedInput.Length - i));
+			int controlBitsCount = (int)Math.Ceiling(Math.Log(wordLen, 2)) + 1;
+			int totalWordLen = wordLen + controlBitsCount;
 
-                // Проверяем контрольные биты и находим ошибку (если есть)
-                int errorPosition = 0;
-                for (int j = 1; j <= encodedWord.Length; j *= 2)
-                {
-                    int parity = 0;
-                    for (int k = j; k <= encodedWord.Length; k += 2 * j)
-                    {
-                        for (int m = 0; m < j && k + m <= encodedWord.Length; m++)
-                        {
-                            if (encodedWord[k + m - 1] == '1')
-                            {
-                                parity ^= 1;
-                            }
-                        }
-                    }
-                    if (parity != 0)
-                    {
-                        errorPosition += j; // Суммируем позиции ошибок
-                    }
-                }
+			for (int i = 0; i < encodedInput.Length; i += totalWordLen)
+			{
+				int remainingLength = Math.Min(totalWordLen, encodedInput.Length - i);
+				if (remainingLength <= 0) break;
 
-                // Исправляем ошибку, если она есть
-                if (errorPosition != 0)
-                {
-                    char[] wordArray = encodedWord.ToCharArray();
-                    wordArray[errorPosition - 1] = wordArray[errorPosition - 1] == '1' ? '0' : '1'; // Инвертируем ошибочный бит
-                    encodedWord = new string(wordArray);
-                }
+				string encodedWord = encodedInput.Substring(i, remainingLength);
 
-                // Извлекаем биты данных, пропуская контрольные биты
-                string decodedWord = "";
-                for (int j = 1; j <= encodedWord.Length; j++)
-                {
-                    if ((j & (j - 1)) != 0) // Если j не степень двойки, это бит данных
-                    {
-                        decodedWord += encodedWord[j - 1];
-                    }
-                }
+				int errorPosition = 0;
+				for (int j = 1; j <= encodedWord.Length; j *= 2)
+				{
+					int parity = 0;
+					for (int k = j; k <= encodedWord.Length; k += 2 * j)
+					{
+						for (int m = 0; m < j && k + m <= encodedWord.Length; m++)
+						{
+							if (encodedWord[k + m - 1] == '1')
+							{
+								parity ^= 1;
+							}
+						}
+					}
+					if (parity != 0)
+					{
+						errorPosition += j; 
+					}
+				}
 
-                // Добавляем декодированное слово к результату
-                result += decodedWord;
-            }
+				if (errorPosition > 0 && errorPosition <= encodedWord.Length)
+				{
+					char[] wordArray = encodedWord.ToCharArray();
+					wordArray[errorPosition - 1] = wordArray[errorPosition - 1] == '1' ? '0' : '1';
+					encodedWord = new string(wordArray);
+				}
 
-            return result;
-        }
-    }
+				string decodedWord = "";
+				for (int j = 1; j <= encodedWord.Length; j++)
+				{
+					if ((j & (j - 1)) != 0) 
+					{
+						decodedWord += encodedWord[j - 1];
+					}
+				}
+
+				result += decodedWord;
+			}
+
+			return result;
+		}
+	}
 }
